@@ -1,10 +1,48 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
-.row {
-  height: 150px;
+// .row {
+//   height: 150px;
+// }
+//
+// .btn {
+//   height: 150px;
+// }
+
+body {
+  margin: 10px auto;
+  text-align: center;
+  width: 1000px;
 }
 
-.btn {
-  height: 150px;
+div.board {
+  border: 1px;
+  margin: 0 auto;
+  width: 605px;
 }
+
+div[id^='row'] div {
+  border: 1px solid black;
+  display: inline-block;
+  height: 200px;
+  overflow: hidden;
+  width: 200px;
+}
+
+// .row1 {
+//   border: 1px solid black;
+//   height: 200px;
+//   width: 200px;
+// }
+//
+// .row2 {
+//   border: 1px solid black;
+//   height: 200px;
+//   width: 200px;
+// }
+//
+// .row3 {
+//   border: 1px solid black;
+//   height: 200px;
+//   width: 200px;
+// }
