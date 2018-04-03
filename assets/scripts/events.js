@@ -14,29 +14,38 @@ const logic = require('./logic')
 // Board as an array of 9 empty strings
 
 const board = ['', '', '', '', '', '', '', '', '']
+console.log(board)
 let turn = ''
 
 // Change turn function will change player turn, add either an 'X' or an 'O'
 // to a space on click, and check to see if a space has been taken
 const changeTurn = function () {
-  // if (element.innerHTML !== '') return
   if (this.innerHTML !== 'X' && this.innerHTML !== 'O') {
     if (turn === objects.player1) {
       turn = objects.player2
     } else {
       turn = objects.player1
-      // board.forEach(changeTurn())
     }
-    // for (let i = 0; i < board.length; i++) {
-    //   board[i] = turn
-    // }
     this.innerHTML = turn
     console.log(turn)
-  }
-  else {
+  } else {
     console.log('This is an invalid space')
   }
   return turn
+}
+
+// Push player token, either 'X' or 'O' to the board array
+const pushToArray = () => {
+  board[0] = $('#0').text()
+  board[1] = $('#1').text()
+  board[2] = $('#2').text()
+  board[3] = $('#3').text()
+  board[4] = $('#4').text()
+  board[5] = $('#5').text()
+  board[6] = $('#6').text()
+  board[7] = $('#7').text()
+  board[8] = $('#8').text()
+  console.log(board)
 }
 
 // Function to check for win based on board index
@@ -104,69 +113,16 @@ const winCondition = () => {
   // }
   // }
 
-const playAgain = function () {
-  for (let i = 0; i < board.length; i++) {
-    board[i].innerHTML = []
-  }
+const playAgain = function (event) {
+  board.innertext = ''
+  console.log(playAgain)
 }
-
-// const winCheck = function () {
-//   if( board[0].textContent === "X" &&
-//       board[1].textContent === "X" &&
-//       board[2].textContent === "X"
-//   ) {}
-//   else if (
-//       board[3].textContent === "X" &&
-//       board[4].textContent === "X" &&
-//       board[5].textContent === "X"
-//   ) {}
-//   else if (
-//       board[6].textContent === "X" &&
-//       board[7].textContent === "X" &&
-//       board[8].textContent === "X"
-//   ) {}
-
-// const addToBoard = function () {
-//   for (let i = 0; i < board.length; i++) {
-//     board[i] = turn
-//   }
-// }
-
-// const winCombo = [
-//   [board[0], board[1], board[2]],
-//   [board[3], board[4], board[5]],
-//   [board[6], board[7], board[8]],
-//   [board[0], board[3], board[6]],
-//   [board[1], board[4], board[7]],
-//   [board[2], board[5], board[8]],
-//   [board[0], board[4], board[8]],
-//   [board[2], board[4], board[6]]
-// ]
-
-// const tileCheck = function () {
-//   if (this.innerHTML === '') {
-//     this.innerHTML = turn
-//   }
-// }
-
-// const gameTokens = function (element) {
-//   if (objects.turn === objects.player1) {
-//     $(element.target).innerText = ('X')
-//   } else {
-//     $(element.target).text('O')
-//   }
-// }
-
-// const paintTile = function () {
-//   if ($('#0').innerHTML === '') {
-//     $('#0').innerHTML = turn
-//   }
-// }
 
 const addHandlers = () => {
   $('.box').on('click', changeTurn)
   $('.box').on('click', winCondition)
-  $('.button').on('click', playAgain)
+  $('#replay').on('click', playAgain)
+  $('.box').on('click', pushToArray)
 
 // $('#0').on('mouseup')
 // $('#1').off('click', changeTurn)
@@ -193,7 +149,8 @@ const addHandlers = () => {
 
 module.exports = {
   // eventHandlers
-  addHandlers
+  addHandlers,
+  board
   // removeHandlers
   // gameLogic
 }
