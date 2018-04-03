@@ -10,33 +10,93 @@
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-      <!-- <nav class="navbar navbar-default">
-      </nav> -->
+
     </head>
-    <body class="container" id="game=board">
+    <body class="container" id="game-board">
+      <header>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#signUpModal">
+          Sign Up
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+              </div>
+              <div class="modal-body">
+                <form id="sign-up" class="border">
+                  <fieldset>
+                    <legend>Sign up!</legend>
+                    <input type="text" name="credentials[email]" placeholder="Email">
+                    <input type="password" name="credentials[password]" placeholder="Password">
+                    <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+                    <input type="submit" value="Sign up!">
+                  </fieldset>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#signInModal">
+        Sign In
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+        </div>
+        <div class="modal-body">
+          <form id="sign-in" class="border">
+            <fieldset>
+              <legend>Sign in!</legend>
+              <input type="text" name="credentials[email]" placeholder="Email">
+              <input type="password" name="credentials[password]" placeholder="Password">
+              <input type="submit" value="Sign in!">
+            </fieldset>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+        </div>
+        </div>
+      </header>
       <h1>Tic Tac Toe</h1>
 
       <div class="board">
       <div class="row" id="row1">
         <!-- <button type="button" class="btn btn-primary btn-lg btn-block" onclick="console.log('in the zero')">0</button> -->
         <!-- <div class="col-xs-4" id='0' onclick="innerText = 'X'"></div> -->
-        <div class="col-xs-4" id='0'></div>
-        <div class="col-xs-4" id='1'></div>
-        <div class="col-xs-4" id='2'></div>
+        <div class="col-xs-4 box" id='0'></div>
+        <div class="col-xs-4 box" id='1'></div>
+        <div class="col-xs-4 box" id='2'></div>
       </div>
 
       <div class="row" id='row2'>
-        <div class="col-xs-4" id='3'></div>
-        <div class="col-xs-4" id='4'></div>
-        <div class="col-xs-4" id='5'></div>
+        <div class="col-xs-4 box" id='3'></div>
+        <div class="col-xs-4 box" id='4'></div>
+        <div class="col-xs-4 box" id='5'></div>
       </div>
 
       <div class="row" id='row3'>
-        <div class="col-xs-4" id='6'></div>
-        <div class="col-xs-4" id='7'></div>
-        <div class="col-xs-4" id='8'></div>
+        <div class="col-xs-4 box" id='6'></div>
+        <div class="col-xs-4 box" id='7'></div>
+        <div class="col-xs-4 box" id='8'></div>
       </div>
     </div>
-
+    <button type="button" id="replay">Play Again</button>
     </body>
 </html>
