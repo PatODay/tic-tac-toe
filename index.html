@@ -12,7 +12,7 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
 
     </head>
-    <body class="container" id="game-board">
+    <body class="container">
       <header>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#signUpModal">
@@ -76,7 +76,9 @@
       </header>
       <h1>Tic Tac Toe</h1>
 
-      <div class="board">
+      <div class="col-xs-12" id='message'></div>
+
+      <div class="board" id="game-board">
       <div class="row" id="row1">
         <!-- <button type="button" class="btn btn-primary btn-lg btn-block" onclick="console.log('in the zero')">0</button> -->
         <!-- <div class="col-xs-4" id='0' onclick="innerText = 'X'"></div> -->
