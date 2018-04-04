@@ -1,5 +1,10 @@
 'use strict'
 
+<<<<<<< HEAD
+=======
+// const events = require('./events')
+
+>>>>>>> development
 // Board as an array of 9 empty strings
 let board = ['', '', '', '', '', '', '', '', '']
 console.log(board)
