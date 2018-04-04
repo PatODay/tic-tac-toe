@@ -1,7 +1,7 @@
 'use strict'
 
 // Board as an array of 9 empty strings
-const board = ['', '', '', '', '', '', '', '', '']
+let board = ['', '', '', '', '', '', '', '', '']
 console.log(board)
 const player1 = 'X'
 const player2 = 'O'
