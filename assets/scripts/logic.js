@@ -1,6 +1,6 @@
 'use strict'
 
-const events = require('./events')
+// const events = require('./events')
 
 // Board as an array of 9 empty strings
 let board = ['', '', '', '', '', '', '', '', '']
@@ -119,7 +119,6 @@ const winCondition = () => {
     return true
   }
 }
-
 
 const playAgain = function (event) {
   event.preventDefault()
