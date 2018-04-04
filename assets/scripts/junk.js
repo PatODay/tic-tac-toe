@@ -156,6 +156,27 @@
 //   [2, 4, 6]
 // ]
 
+// const blockTile = function () {
+//   this.off()
+// }
+
+// const paintSquare = function (event) {
+//   this.innerHTML = objects.turn
+// }
+
+// // check for draw
+// const isEmpty = function (element) {
+//   return element === ('')
+// }
+// const checkDraw = function () {
+//   const result = board.some(isEmpty)
+//   console.log(result)
+//   if (result === false) {
+//     $('#message').text('Game is a draw')
+//     $('#message').css('background-color', 'green')
+//   }
+// }
+
 module.exports = {
   // player1,
   // player2
