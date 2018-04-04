@@ -24,9 +24,12 @@ div.board {
 div[id^='row'] div {
   border: 1px solid black;
   display: inline-block;
+  font-size: 140px;
   height: 200px;
   overflow: hidden;
+  text-align: center;
   width: 200px;
+
 }
 
 // .row1 {
