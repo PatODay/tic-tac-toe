@@ -27,15 +27,12 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
               </div>
-              <div class="modal-body">
-                <form id="sign-up" class="border">
-                  <fieldset>
-                    <legend>Sign up!</legend>
-                    <input type="text" name="credentials[email]" placeholder="Email">
-                    <input type="password" name="credentials[password]" placeholder="Password">
-                    <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
-                    <input type="submit" id='sign-up-id' value="Sign up!">
-                  </fieldset>
+              <div class="modal-body" id="sign-up">
+                <form>
+                  <input name="credentials[email]" type="text" value="an@example.email">
+                  <input name="credentials[password]" type="password" value="Password">
+                  <input name="credentials[password_confirmation]" type="password" value="Password">
+                  <input type="submit" value="Sign up!">
                 </form>
               </div>
               <div class="modal-footer">
@@ -57,14 +54,11 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="myModalLabel">Sign In</h4>
         </div>
-        <div class="modal-body">
-          <form id="sign-in" class="border">
-            <fieldset>
-              <legend>Sign in!</legend>
+        <div class="modal-body" id="signIn">
+          <form id="sign-in">
               <input type="text" name="credentials[email]" placeholder="Email">
               <input type="password" name="credentials[password]" placeholder="Password">
-              <input type="submit" id="sign-in-id" value="Sign in!">
-            </fieldset>
+              <input type="submit" value="Sign in!">
           </form>
         </div>
         <div class="modal-footer">
@@ -75,8 +69,8 @@
         </div>
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary btn-lg hidden" data-toggle="modal" data-target="#changePasswordModal" id='change-password-modal'>
-        Sign In
+        <button type="button" class="btn btn-primary btn-lg hidden" data-toggle="modal" data-target="#changePasswordModal" id='changePasswordButton'>
+        Change Password
         </button>
 
         <!-- Modal -->
@@ -87,14 +81,11 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="myModalLabel">Sign In</h4>
         </div>
-        <div class="modal-body">
-          <form id="change-password" class="border">
-            <fieldset>
-              <legend>Change Password</legend>
+        <div class="modal-body" id="changePassword">
+          <form>
               <input type="password" name="passwords[old]" placeholder="Old Password">
               <input type="password" name="passwords[new]" placeholder="New Password">
               <input type="submit" value="Change Password">
-            </fieldset>
           </form>
         </div>
         <div class="modal-footer">
@@ -103,10 +94,8 @@
         </div>
         </div>
         </div>
-        <form id="sign-out" class="border">
-  <fieldset>
-    <input type="submit" class='hidden' value="Sign Out">
-  </fieldset>
+        <form class="border">
+    <input type="submit" class='hidden' value="Sign Out" id="sign-out" >
 </form>
       </header>
       <h1>Tic Tac Toe</h1>

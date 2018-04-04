@@ -1,14 +1,16 @@
 'use strict'
 
-const store = ('../store')
+const store = require('../store')
 
 const signUpSuccess = function () {
   $('#message').text('Successfully signed up')
   $('#message').css('background-color', 'green')
-  $('#sign-up-modal').hide()
-  $('#sign-in-modal').hide()
-  $('#change-password-modal').show()
-  $('#sign-out').show()
+  $('#signUpModal').modal('hide')
+  $('#signUpButton').modal('hide')
+  $('#signInButton').modal('hide')
+  $('#signInModal').modal('hide')
+  $('#changePasswordButton').removeClass()
+  $('#sign-out').removeClass()
 }
 
 const signUpFailure = function () {
@@ -19,10 +21,12 @@ const signUpFailure = function () {
 const signInSuccess = function (data) {
   $('#message').text('Successfully signed in')
   $('#message').css('background-color', 'green')
-  $('#sign-up-modal').hide()
-  $('#sign-in-modal').hide()
-  $('#change-password-modal').show()
-  $('#sign-out').show()
+  $('#signUpModal').modal('hide')
+  $('#signInModal').modal('hide')
+  $('#signUpButton').hide()
+  $('#signInButton').hide()
+  $('#changePasswordButton').removeClass()
+  $('#sign-out').removeClass()
   console.log(data)
   store.user = data.user
 }

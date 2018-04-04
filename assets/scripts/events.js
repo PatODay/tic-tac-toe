@@ -12,6 +12,7 @@ const onSignUp = function (event) {
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
+  document.getElementById('sign-up').reset()
 }
 
 const onSignIn = function (event) {
@@ -21,6 +22,7 @@ const onSignIn = function (event) {
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
+  document.getElementById('sign-in').reset()
 }
 //
 // const onChangePassword = function (event) {
@@ -45,8 +47,8 @@ const addHandlers = () => {
   $('#replay').on('click', logic.playAgain)
   $('.box').on('click', logic.pushToArray)
   $('.box').on('click', logic.alertCurrentPlayer)
-  $('#sign-up-id').on('submit', onSignUp)
-  $('#sign-in-id').on('submit', onSignIn)
+  $('#sign-up').on('submit', onSignUp)
+  $('#sign-in').on('submit', onSignIn)
 }
 
 module.exports = {
