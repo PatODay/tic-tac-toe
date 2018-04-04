@@ -1,8 +1,8 @@
 
-const events = require('./events')
+// const events = require('./events')
 // Assigning 'x' and 'o' to players
-const player1 = 'X'
-const player2 = 'O'
+// const player1 = 'X'
+// const player2 = 'O'
 // const players = ['X', 'O']
 // const markers = ['X', 'O']
 
@@ -34,6 +34,6 @@ const player2 = 'O'
 // ]
 
 module.exports = {
-  player1,
-  player2
+  // player1,
+  // player2
 }
