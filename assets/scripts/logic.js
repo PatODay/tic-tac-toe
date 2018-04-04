@@ -120,7 +120,6 @@ const winCondition = () => {
   }
 }
 
-
 const playAgain = function (event) {
   event.preventDefault()
   $('#game-board').show()
