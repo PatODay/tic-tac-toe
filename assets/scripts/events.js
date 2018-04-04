@@ -10,9 +10,6 @@ const logic = require('./logic')
 //   this.innerHTML = objects.turn
 // }
 
-
-
-
 // // check for draw
 // const isEmpty = function (element) {
 //   return element === ('')
@@ -26,9 +23,11 @@ const logic = require('./logic')
 //   }
 // }
 
-const playAgain = function () {
+const playAgain = function (event) {
+  event.preventDefault()
+  $('.game-board').show()
+  $('.box').html('')
   logic.board = ['', '', '', '', '', '', '', '', '']
-  console.log(playAgain)
 }
 
 const addHandlers = () => {
