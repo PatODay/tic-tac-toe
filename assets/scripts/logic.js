@@ -1,7 +1,9 @@
 'use strict'
 
+const events = require('./events')
+
 // Board as an array of 9 empty strings
-const board = ['', '', '', '', '', '', '', '', '']
+let board = ['', '', '', '', '', '', '', '', '']
 console.log(board)
 const player1 = 'X'
 const player2 = 'O'
@@ -118,10 +120,19 @@ const winCondition = () => {
   }
 }
 
+const playAgain = function (event) {
+  event.preventDefault()
+  $('#game-board').show()
+  $('.box').html('')
+  board = ['', '', '', '', '', '', '', '', '']
+  turn = player2
+}
+
 module.exports = {
   changeTurn,
   pushToArray,
   winCondition,
   player1,
-  player2
+  player2,
+  playAgain
 }

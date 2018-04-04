@@ -15,14 +15,14 @@ body {
   width: 1000px;
 }
 
-div.board {
+.board {
   border: 1px;
   margin: 0 auto;
   width: 605px;
 }
 
-div[id^='row'] div {
-  border: 1px solid black;
+.col-xs-4 {
+  border: 1px solid;
   display: inline-block;
   font-size: 140px;
   height: 200px;
