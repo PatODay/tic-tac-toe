@@ -22,15 +22,16 @@ const changeTurn = function () {
     console.log(turn)
   } else {
     console.log('This is an invalid space')
+    $('#player-message').text('This is an invalid space')
   }
   return turn
 }
 
 const alertCurrentPlayer = () => {
   if (turn === 'O') {
-    $('#message').text('Player X it is your turn')
+    $('#player-message').text('Player X it is your turn')
   } else if (turn === 'X') {
-    $('#message').text('Player O it is your turn')
+    $('#player-message').text('Player O it is your turn')
   }
   return turn
 }
@@ -82,7 +83,8 @@ const winCondition = () => {
     $('#message').text('X wins')
     $('#message').css('background-color', 'green')
     $('#game-board').hide()
-    $('#message').hide()
+    $('#player-message').hide()
+    $('#outcome-message').show()
     return true
     // if O wins top row
   } else if ((board[0] === 'O' && board[1] === 'O' && board[2] === 'O') ||
@@ -105,7 +107,8 @@ const winCondition = () => {
     $('#message').text('O wins')
     $('#message').css('background-color', 'purple')
     $('#game-board').hide()
-    $('#message').hide()
+    $('#player-message').hide()
+    $('#outcome-message').show()
     return true
   } else if ((board[0].innerHTML !== '' && board[1].innerHTML !== '' && board[2].innerHTML !== '' &&
     board[3].innerHTML !== '' && board[4].innerHTML !== '' && board[5].innerHTML !== '' && board[6].innerHTML !== '' &&
@@ -115,7 +118,8 @@ const winCondition = () => {
     $('#message').text('Its a draw')
     $('#message').css('background-color', 'purple')
     $('#game-board').hide()
-    $('#message').hide()
+    $('#player-message').hide()
+    $('#outcome-message').show()
     return true
   }
 }
@@ -124,6 +128,8 @@ const playAgain = function (event) {
   event.preventDefault()
   $('#game-board').show()
   $('.box').html('')
+  $('#player-message').show()
+  $('#outcome-message').hide()
   board = ['', '', '', '', '', '', '', '', '']
   turn = player2
 }
