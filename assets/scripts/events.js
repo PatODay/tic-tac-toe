@@ -25,14 +25,15 @@ const onSignIn = function (event) {
   document.getElementById('sign-in').reset()
 }
 
-// const onChangePassword = function (event) {
-//   event.preventDefault()
-//   const data = getFormFields(event.target)
-//   console.log(data)
-//   api.changePassword(data)
-//     .then(ui.changePasswordSuccess)
-//     .catch(ui.changePasswordFailure)
-// }
+const onChangePassword = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  console.log(data)
+  api.changePassword(data)
+    .then(ui.changePasswordSuccess)
+    .catch(ui.changePasswordFailure)
+  document.getElementById('change-password').reset()
+}
 //
 // const onSignOut = function (event) {
 //   event.preventDefault()
@@ -49,6 +50,7 @@ const addHandlers = () => {
   $('.box').on('click', logic.alertCurrentPlayer)
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
+  $('#change-password').on('submit', onChangePassword)
 }
 
 module.exports = {
