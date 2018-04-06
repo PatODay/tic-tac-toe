@@ -3,14 +3,16 @@
 const store = require('../store')
 
 const signUpSuccess = function () {
-  $('#message').text('Successfully signed up')
-  $('#message').css('background-color', 'green')
+  $('#sign-message').text('Successfully signed up')
+  // $('#sign-message').css('background-color', 'green')
   $('#signUpModal').modal('hide')
-  $('#signUpButton').modal('hide')
-  $('#signInButton').modal('hide')
-  $('#signInModal').modal('hide')
-  $('#changePasswordButton').removeClass()
-  $('#sign-out').removeClass()
+  setTimeout(() => {
+    $('#sign-message').html('')
+  }, 3000
+  )
+  // $('#signUpButton').modal('hide')
+  // $('#signInButton').modal('hide')
+  // $('#signInModal').modal('hide')
 }
 
 const signUpFailure = function () {
@@ -19,36 +21,47 @@ const signUpFailure = function () {
 }
 
 const signInSuccess = function (data) {
-  $('#message').text('Successfully signed in')
-  $('#message').css('background-color', 'green')
+  $('#sign-message').text('Successfully signed in')
+  // $('#player-message').css('background-color', 'green')
   $('#signUpModal').modal('hide')
   $('#signInModal').modal('hide')
   $('#signUpButton').hide()
   $('#signInButton').hide()
   $('#changePasswordButton').removeClass()
   $('#sign-out').removeClass()
+  $('#board-hide').removeClass()
+  setTimeout(() => {
+    $('#sign-message').html('')
+  }, 3000
+  )
   console.log(data)
   store.user = data.user
 }
 
 const signInFailure = function () {
-  $('#message').text('Failed to sign in')
-  $('#message').css('background-color', 'red')
+  $('#player-message').text('Failed to sign in')
+  $('#player-message').css('background-color', 'red')
 }
 
 const changePasswordSuccess = function () {
-  $('#message').text('Successfully changed password')
-  $('#message').css('background-color', 'green')
+  $('#player-message').text('Successfully changed password')
+  // $('#player-message').css('background-color', 'green')
+  $('#sign-out').removeClass()
+  setTimeout(() => {
+    $('#sign-message').html('')
+  }, 3000
+  )
+  $('#changePasswordModal').modal('toggle')
 }
 
 const changePasswordFailure = function () {
-  $('#message').text('Failed to change password')
-  $('#message').css('background-color', 'red')
+  $('#player-message').text('Failed to change password')
+  $('#player-message').css('background-color', 'red')
 }
 
 const signOutSuccess = function () {
-  $('#message').text('Successfully signed out')
-  $('#message').css('background-color', 'green')
+  $('#player-message').text('Successfully signed out')
+  $('#player-message').css('background-color', 'green')
   store.user = null
 }
 
