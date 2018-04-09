@@ -34,13 +34,13 @@ const onChangePassword = function (event) {
     .catch(ui.changePasswordFailure)
   document.getElementById('change-password').reset()
 }
-//
-// const onSignOut = function (event) {
-//   event.preventDefault()
-//   api.signOut()
-//     .then(ui.signOutSuccess)
-//     .catch(ui.signOutFailure)
-// }
+
+const onSignOut = function (event) {
+  event.preventDefault()
+  api.signOut()
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
+}
 
 const addHandlers = () => {
   $('.box').on('click', logic.changeTurn)
@@ -51,6 +51,7 @@ const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
+  $('#sign-out').on('click', onSignOut)
 }
 
 module.exports = {

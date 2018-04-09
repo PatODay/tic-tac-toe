@@ -60,8 +60,8 @@ const changePasswordFailure = function () {
 }
 
 const signOutSuccess = function () {
-  $('#player-message').text('Successfully signed out')
-  $('#player-message').css('background-color', 'green')
+  // $('#player-message').text('Successfully signed out')
+  // $('#player-message').css('background-color', 'green')
   store.user = null
 }
 
