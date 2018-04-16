@@ -1,6 +1,8 @@
 'use strict'
 
 // const events = require('./events')
+// const store = require('./store')
+const api = require('./auth/api')
 
 // Board as an array of 9 empty strings
 let board = ['', '', '', '', '', '', '', '', '']
@@ -38,7 +40,7 @@ const alertCurrentPlayer = () => {
 alertCurrentPlayer()
 
 // Push player token, either 'X' or 'O' to the board array
-const pushToArray = () => {
+const pushToArray = (data) => {
   board[0] = $('#0').text()
   board[1] = $('#1').text()
   board[2] = $('#2').text()
@@ -48,7 +50,8 @@ const pushToArray = () => {
   board[6] = $('#6').text()
   board[7] = $('#7').text()
   board[8] = $('#8').text()
-  console.log(board)
+  data = api.gameUpdate
+  return data
 }
 
 // Function to check for win based on board index
@@ -62,6 +65,8 @@ const winCondition = () => {
   board[6] = document.getElementById('6')
   board[7] = document.getElementById('7')
   board[8] = document.getElementById('8')
+
+  let isOver = false
 
   if ((board[0].innerHTML === 'X' && board[1].innerHTML === 'X' && board[2].innerHTML === 'X') ||
       // or x wins middle row
@@ -85,6 +90,7 @@ const winCondition = () => {
     $('#game-board').hide()
     $('#player-message').hide()
     $('#outcome-message').show()
+    isOver = true
     return true
     // if O wins top row
   } else if ((board[0] === 'O' && board[1] === 'O' && board[2] === 'O') ||
@@ -109,6 +115,7 @@ const winCondition = () => {
     $('#game-board').hide()
     $('#player-message').hide()
     $('#outcome-message').show()
+    isOver = true
     return true
   } else if ((board[0].innerHTML !== '' && board[1].innerHTML !== '' && board[2].innerHTML !== '' &&
     board[3].innerHTML !== '' && board[4].innerHTML !== '' && board[5].innerHTML !== '' && board[6].innerHTML !== '' &&
@@ -120,18 +127,21 @@ const winCondition = () => {
     $('#game-board').hide()
     $('#player-message').hide()
     $('#outcome-message').show()
+    isOver = true
     return true
   }
+  return isOver
 }
 
 const playAgain = function (event) {
   event.preventDefault()
+  board = ['', '', '', '', '', '', '', '', '']
+  turn = player2
   $('#game-board').show()
   $('.box').html('')
   $('#player-message').show()
   $('#outcome-message').hide()
-  board = ['', '', '', '', '', '', '', '', '']
-  turn = player2
+  $('#board-hide').removeClass()
 }
 
 module.exports = {

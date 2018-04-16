@@ -29,7 +29,8 @@ const signInSuccess = function (data) {
   $('#signInButton').hide()
   $('#changePasswordButton').removeClass()
   $('#sign-out').removeClass()
-  $('#board-hide').removeClass()
+  $('#replay').removeClass()
+  $('#get-games').removeClass()
   setTimeout(() => {
     $('#sign-message').html('')
   }, 3000
@@ -62,6 +63,15 @@ const changePasswordFailure = function () {
 const signOutSuccess = function () {
   // $('#player-message').text('Successfully signed out')
   // $('#player-message').css('background-color', 'green')
+  $('#replay').addClass('hidden')
+  $('#get-games').addClass('hidden')
+  $('#board-hide').addClass('hidden')
+  $('#replay').addClass('hidden')
+  $('#get-games').addClass('hidden')
+  $('#signUpButton').addClass('show')
+  $('#signInButton').addClass('show')
+  $('#changePasswordButton').addClass('hidden')
+  $('#sign-out').addClass('hidden')
   store.user = null
 }
 

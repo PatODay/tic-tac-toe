@@ -2,6 +2,9 @@
 
 const config = require('../config')
 const store = require('../store')
+const events = require('../events')
+const logic = require('../logic')
+// const getFormFields = require('./../../lib/get-form-fields')
 
 const signUp = function (data) {
   return $.ajax({
@@ -48,9 +51,50 @@ const signOut = function () {
   })
 }
 
+const onGetGameData = function (data) {
+  $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    }
+  })
+    .then(function (data) {
+      console.log('data is', data)
+    })
+}
+
+const onNewGame = function () {
+  $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'POST',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    }
+  })
+    .then(function (data) {
+      console.log('after create, data is', data)
+      store.game = data.game
+    })
+}
+
+const gameUpdate = function (data) {
+  $.ajax({
+    url: config.apiUrl + '/games/' + store.game.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
+    data
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  onGetGameData,
+  onNewGame,
+  gameUpdate
 }
