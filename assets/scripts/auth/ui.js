@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store')
+const logic = require('../logic')
 
 const signUpSuccess = function () {
   $('#sign-message').text('Successfully signed up')
@@ -75,6 +76,20 @@ const signOutSuccess = function () {
   store.user = null
 }
 
+const gameStartSuccess = function (data) {
+  console.log('store is', store)
+  store.game = data.game
+}
+
+const gameIndexSuccess = function (data) {
+  // console.log('data is', data)
+}
+
+const gamePatchSuccess = function (data) {
+  console.log('game patch success data is', data)
+  store.game = data.game
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -82,5 +97,8 @@ module.exports = {
   signInFailure,
   changePasswordSuccess,
   changePasswordFailure,
-  signOutSuccess
+  signOutSuccess,
+  gameStartSuccess,
+  gameIndexSuccess,
+  gamePatchSuccess
 }

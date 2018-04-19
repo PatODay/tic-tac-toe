@@ -51,41 +51,80 @@ const signOut = function () {
   })
 }
 
-const onGetGameData = function (data) {
-  $.ajax({
+// const onGetGameData = function (data) {
+//   $.ajax({
+//     url: config.apiUrl + '/games',
+//     method: 'GET',
+//     headers: {
+//       Authorization: `Token token=${store.user.token}`
+//     }
+//   })
+//     .then(function (data) {
+//       console.log('data is', data)
+//     })
+// }
+
+const gameIndex = function (data) {
+  return $.ajax({
     url: config.apiUrl + '/games',
     method: 'GET',
     headers: {
+      contentType: 'application/json',
       Authorization: `Token token=${store.user.token}`
     }
   })
     .then(function (data) {
       console.log('data is', data)
+      const length = data.games.length
+      $('#index-message').text('game length is ' + length)
     })
 }
 
-const onNewGame = function () {
-  $.ajax({
+const gameStart = function () {
+  return $.ajax({
     url: config.apiUrl + '/games',
     method: 'POST',
     headers: {
+      contentType: 'application/json',
       Authorization: `Token token=${store.user.token}`
-    }
+    },
+    data: {}
   })
-    .then(function (data) {
-      console.log('after create, data is', data)
-      store.game = data.game
-    })
 }
 
-const gameUpdate = function (data) {
-  $.ajax({
+// const gameUpdate = function (data) {
+//   return $.ajax({
+//     url: config.apiUrl + '/games/' + store.game.id,
+//     method: 'PATCH',
+//     headers: {
+//       contentType: 'application/json',
+//       Authorization: `Token token=${store.user.token}`
+//     }
+//   })
+//     .then(function (data) {
+//       console.log('game update data is', data)
+//     })
+// }
+
+// const turn = logic.turn
+
+const gameUpdate = function (data, turn, isOver) {
+  return $.ajax({
     url: config.apiUrl + '/games/' + store.game.id,
     method: 'PATCH',
     headers: {
+      contentType: 'application/json',
       Authorization: `Token token=${store.user.token}`
     },
-    data
+    data: {
+      game: {
+        cell: {
+          index: data,
+          value: turn
+        },
+        over: isOver
+      }
+    }
   })
 }
 
@@ -94,7 +133,7 @@ module.exports = {
   signIn,
   changePassword,
   signOut,
-  onGetGameData,
-  onNewGame,
+  gameIndex,
+  gameStart,
   gameUpdate
 }
