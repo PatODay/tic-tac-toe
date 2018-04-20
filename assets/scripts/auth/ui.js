@@ -83,6 +83,8 @@ const signOutSuccess = function () {
   $('#player-message').addClass('hidden')
   $('#sign-out-message').removeClass('hidden')
   $('#sign-out-message').text('Thanks for playing, come back again soon')
+  $('#sign-message').text('')
+  $('#player-message').removeClass('hidden')
   $('input[type=text]').val('')
   $('input[type=password]').val('')
   store.user = null
