@@ -14,7 +14,6 @@ const signUpSuccess = function () {
 const signUpFailure = function () {
   $('#signUpModal').modal('hide')
   $('#sign-message').text('Failed to sign up')
-  $('#sign-message').css('background-color', 'red')
 }
 
 const signInSuccess = function (data) {
@@ -36,7 +35,6 @@ const signInSuccess = function (data) {
 
 const signInFailure = function () {
   $('#player-message').text('Failed to sign in')
-  $('#player-message').css('background-color', 'red')
 }
 
 const changePasswordSuccess = function () {
