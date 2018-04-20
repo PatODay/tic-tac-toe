@@ -37,6 +37,8 @@ const onSignOut = function (event) {
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
+  $('input[type=text]').val('')
+  $('input[type=password]').val('')
 }
 
 const onGetGameIndex = function () {
