@@ -2,9 +2,6 @@
 
 const config = require('../config')
 const store = require('../store')
-const events = require('../events')
-const logic = require('../logic')
-// const getFormFields = require('./../../lib/get-form-fields')
 
 const signUp = function (data) {
   return $.ajax({
@@ -51,19 +48,6 @@ const signOut = function () {
   })
 }
 
-// const onGetGameData = function (data) {
-//   $.ajax({
-//     url: config.apiUrl + '/games',
-//     method: 'GET',
-//     headers: {
-//       Authorization: `Token token=${store.user.token}`
-//     }
-//   })
-//     .then(function (data) {
-//       console.log('data is', data)
-//     })
-// }
-
 const gameIndex = function (data) {
   return $.ajax({
     url: config.apiUrl + '/games',
@@ -74,9 +58,8 @@ const gameIndex = function (data) {
     }
   })
     .then(function (data) {
-      console.log('data is', data)
       const length = data.games.length
-      $('#index-message').text('game length is ' + length)
+      $('#index-message').text(length + ' games played')
     })
 }
 
@@ -91,22 +74,6 @@ const gameStart = function () {
     data: {}
   })
 }
-
-// const gameUpdate = function (data) {
-//   return $.ajax({
-//     url: config.apiUrl + '/games/' + store.game.id,
-//     method: 'PATCH',
-//     headers: {
-//       contentType: 'application/json',
-//       Authorization: `Token token=${store.user.token}`
-//     }
-//   })
-//     .then(function (data) {
-//       console.log('game update data is', data)
-//     })
-// }
-
-// const turn = logic.turn
 
 const gameUpdate = function (data, turn, isOver) {
   return $.ajax({

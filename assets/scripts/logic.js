@@ -23,14 +23,17 @@ const changeTurn = function () {
       turn = player1
     }
     this.innerHTML = turn
-    console.log('turn is', turn)
   } else {
-    console.log('This is an invalid space')
-    $('#player-message').text('This is an invalid space')
+    $('#invalid-message').text('This is an invalid space')
+    setTimeout(() => {
+      $('#invalid-message').html('')
+    }, 2500
+    )
   }
   return turn
 }
 
+// Alerts player currently up
 const alertCurrentPlayer = () => {
   if (turn === 'O') {
     $('#player-message').text('Player X it is your turn')
@@ -40,8 +43,7 @@ const alertCurrentPlayer = () => {
   return turn
 }
 
-// Push player token, either 'X' or 'O' to the board array
-// const pushToArray = (data) => {
+// const pushToArray = function () {
 //   board[0] = $('#0').text()
 //   board[1] = $('#1').text()
 //   board[2] = $('#2').text()
@@ -51,39 +53,11 @@ const alertCurrentPlayer = () => {
 //   board[6] = $('#6').text()
 //   board[7] = $('#7').text()
 //   board[8] = $('#8').text()
-//   api.gameUpdate()
-//     .then(ui.gamePatchSuccess)
-//   console.log(board)
-//   return data
+//   // board[event.target] = event.target.text
+//
+//   console.log('board is', board)
+//   return board
 // }
-
-// const data = {
-//   data: {
-//     game: {
-//       cell: {
-//         index: '',
-//         value: ''
-//       },
-//       over: false
-//     }
-//   }
-// }
-
-const pushToArray = function () {
-  board[0] = $('#0').text()
-  board[1] = $('#1').text()
-  board[2] = $('#2').text()
-  board[3] = $('#3').text()
-  board[4] = $('#4').text()
-  board[5] = $('#5').text()
-  board[6] = $('#6').text()
-  board[7] = $('#7').text()
-  board[8] = $('#8').text()
-  // board[event.target] = event.target.text
-
-  console.log('board is', board)
-  return board
-}
 
 // Function to check for win based on board index
 const winCondition = () => {
@@ -113,7 +87,6 @@ const winCondition = () => {
       // or X wins right to left diagonal
       (board[2].innerHTML === 'X' && board[4].innerHTML === 'X' && board[6].innerHTML === 'X')) {
     // print player one wins
-    console.log('X wins')
     $('#game-board').hide()
     $('#player-message').addClass('hidden')
     $('#win-message').removeClass()
@@ -137,7 +110,6 @@ const winCondition = () => {
       // or O wins right to left diagonal
       (board[2].innerHTML === 'O' && board[4].innerHTML === 'O' && board[6].innerHTML === 'O')) {
     // print player two wins
-    console.log('O wins')
     $('#game-board').hide()
     $('#player-message').addClass('hidden')
     $('#win-message').removeClass()
@@ -148,7 +120,6 @@ const winCondition = () => {
     board[3].innerHTML !== '' && board[4].innerHTML !== '' && board[5].innerHTML !== '' && board[6].innerHTML !== '' &&
     board[7].innerHTML !== '' && board[8].innerHTML !== '')) {
     // return draw
-    console.log('Its a draw')
     $('#game-board').hide()
     $('#player-message').addClass('hidden')
     $('#win-message').removeClass()
@@ -158,24 +129,12 @@ const winCondition = () => {
   }
 }
 
-// const data = {
-//   'game': {
-//     'cell': {
-//       'index': '',
-//       'value': ''
-//     },
-//     'over': false
-//   }
-// }
-
 const playAgain = function (event) {
   event.preventDefault()
   board = ['', '', '', '', '', '', '', '', '']
   turn = player2
   $('#game-board').show()
   $('.box').html('')
-  $('#player-message').show()
-  $('#outcome-message').hide()
   $('#board-hide').removeClass()
   $('#player-message').text('Player X Begin')
   api.gameStart()
@@ -184,7 +143,7 @@ const playAgain = function (event) {
 
 module.exports = {
   changeTurn,
-  pushToArray,
+  // pushToArray,
   winCondition,
   player1,
   player2,
@@ -193,5 +152,4 @@ module.exports = {
   turn,
   isOver,
   alertCurrentPlayer
-  // gamePost
 }
