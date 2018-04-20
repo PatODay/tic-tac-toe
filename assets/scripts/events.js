@@ -42,6 +42,11 @@ const onSignOut = function (event) {
 const onGetGameIndex = function () {
   $('#index-message').removeClass('hidden')
   api.gameIndex()
+  setTimeout(() => {
+    $('#index-message').text('')
+    $('#index-message').addClass('hidden')
+  }, 3000
+  )
 }
 
 const gamePatch = function (event) {
