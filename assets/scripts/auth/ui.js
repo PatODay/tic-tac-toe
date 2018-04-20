@@ -39,10 +39,11 @@ const signInFailure = function () {
 }
 
 const changePasswordSuccess = function () {
-  $('#player-message').text('Successfully changed password')
+  $('#password-message').text('Successfully changed password')
+  $('#password-message').removeClass()
   $('#sign-out').removeClass()
   setTimeout(() => {
-    $('#sign-message').html('')
+    $('#password-message').addClass('hidden')
   }, 3000
   )
   $('#changePasswordModal').modal('toggle')
@@ -50,8 +51,12 @@ const changePasswordSuccess = function () {
 
 const changePasswordFailure = function () {
   $('#changePasswordModal').modal('toggle')
-  $('#player-message').text('Failed to change password')
-  $('#player-message').css('background-color', 'red')
+  $('#password-message').removeClass()
+  $('#password-message').text('Failed to change password')
+  setTimeout(() => {
+    $('#password-message').addClass('hidden')
+  }, 3000
+  )
 }
 
 const signOutSuccess = function () {
