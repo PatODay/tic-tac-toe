@@ -11,7 +11,6 @@ const onSignUp = function (event) {
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
-  document.getElementById('sign-up').reset()
 }
 
 const onSignIn = function (event) {
@@ -20,7 +19,6 @@ const onSignIn = function (event) {
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
-  document.getElementById('sign-in').reset()
 }
 
 const onChangePassword = function (event) {
@@ -29,7 +27,6 @@ const onChangePassword = function (event) {
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
-  document.getElementById('change-password').reset()
 }
 
 const onSignOut = function (event) {
