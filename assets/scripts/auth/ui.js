@@ -41,6 +41,10 @@ const signInFailure = function () {
   $('#player-message').text('Failed to sign in')
   $('input[type=text]').val('')
   $('input[type=password]').val('')
+  setTimeout(() => {
+    $('#player-message').addClass('hidden')
+  }, 3000
+  )
 }
 
 const changePasswordSuccess = function () {
@@ -82,6 +86,10 @@ const signOutSuccess = function () {
   $('input[type=text]').val('')
   $('input[type=password]').val('')
   store.user = null
+  setTimeout(() => {
+    $('#sign-out-message').addClass('hidden')
+  }, 5000
+  )
 }
 
 const gameStartSuccess = function (data) {
