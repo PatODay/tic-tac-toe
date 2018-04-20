@@ -12,8 +12,9 @@ const signUpSuccess = function () {
 }
 
 const signUpFailure = function () {
-  $('#message').text('Failed to sign up')
-  $('#message').css('background-color', 'red')
+  $('#signUpModal').modal('hide')
+  $('#sign-message').text('Failed to sign up')
+  $('#sign-message').css('background-color', 'red')
 }
 
 const signInSuccess = function (data) {
