@@ -29,9 +29,9 @@
               </div>
               <div class="modal-body" id="sign-up">
                 <form>
-                  <input name="credentials[email]" type="text" value="an@example.email">
-                  <input name="credentials[password]" type="password" value="Password">
-                  <input name="credentials[password_confirmation]" type="password" value="Password">
+                  <input name="credentials[email]" type="text" placeholder="an@example.email">
+                  <input name="credentials[password]" type="password" placeholder="Password">
+                  <input name="credentials[password_confirmation]" type="password" placeholder="Confirm Password">
                   <input type="submit" value="Sign up!">
                 </form>
               </div>
@@ -79,10 +79,10 @@
         <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+          <h4 class="modal-title" id="myModalLabel">Change Password</h4>
         </div>
         <div class="modal-body" id="changePassword">
-          <form>
+          <form id="change-password">
               <input type="password" name="passwords[old]" placeholder="Old Password">
               <input type="password" name="passwords[new]" placeholder="New Password">
               <input type="submit" value="Change Password">
@@ -95,13 +95,18 @@
         </div>
         </div>
         <form class="border">
-    <input type="submit" class='hidden' value="Sign Out" id="sign-out" >
+    <input type="button" class='hidden' value="Sign Out" id="sign-out" >
 </form>
       </header>
       <h1>Tic Tac Toe</h1>
 
-      <div class="col-xs-12" id='message'></div>
+      <div class="col-xs-12 show" id="player-message"></div>
+      <div class="col-xs-12 show" id="sign-message"></div>
+      <div class="col-xs-12 hidden" id="win-message"></div>
+      <div class="col-xs-12 show" id="index-message"></div>
+      <div class="col-xs-12 show" id="invalid-message"></div>
 
+      <div class="hidden" id="board-hide">
       <div class="board" id="game-board">
       <div class="row" id="row1">
         <!-- <button type="button" class="btn btn-primary btn-lg btn-block" onclick="console.log('in the zero')">0</button> -->
@@ -123,6 +128,8 @@
         <div class="col-xs-4 box" id='8'></div>
       </div>
     </div>
-    <button type="button" id="replay">Play Again</button>
+    </div>
+    <button type="button" id="replay" class="hidden">New Game</button>
+    <button type="button" id="get-games" class="hidden">Get Games</button>
     </body>
 </html>

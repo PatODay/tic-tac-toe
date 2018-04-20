@@ -1,54 +1,63 @@
 'use strict'
 
 // const events = require('./events')
+// const store = require('./store')
+const api = require('./auth/api')
+const ui = require('./auth/ui')
+// const getFormFields = require('../../lib/get-form-fields')
 
 // Board as an array of 9 empty strings
 let board = ['', '', '', '', '', '', '', '', '']
-console.log(board)
 const player1 = 'X'
 const player2 = 'O'
 let turn = ''
+let isOver = false
 
 // Change turn function will change player turn, add either an 'X' or an 'O'
 // to a space on click, and check to see if a space has been taken
 const changeTurn = function () {
-  if (this.innerHTML !== 'X' && this.innerHTML !== 'O') {
+  if (this.innerText !== 'X' && this.innerText !== 'O') {
     if (turn === player1) {
       turn = player2
     } else {
       turn = player1
     }
     this.innerHTML = turn
-    console.log(turn)
   } else {
-    console.log('This is an invalid space')
+    $('#invalid-message').text('This is an invalid space')
+    setTimeout(() => {
+      $('#invalid-message').html('')
+    }, 2500
+    )
   }
   return turn
 }
 
+// Alerts player currently up
 const alertCurrentPlayer = () => {
   if (turn === 'O') {
-    $('#message').text('Player X it is your turn')
+    $('#player-message').text('Player X it is your turn')
   } else if (turn === 'X') {
-    $('#message').text('Player O it is your turn')
+    $('#player-message').text('Player O it is your turn')
   }
   return turn
 }
-alertCurrentPlayer()
 
-// Push player token, either 'X' or 'O' to the board array
-const pushToArray = () => {
-  board[0] = $('#0').text()
-  board[1] = $('#1').text()
-  board[2] = $('#2').text()
-  board[3] = $('#3').text()
-  board[4] = $('#4').text()
-  board[5] = $('#5').text()
-  board[6] = $('#6').text()
-  board[7] = $('#7').text()
-  board[8] = $('#8').text()
-  console.log(board)
-}
+// const pushToArray = function () {
+//   board[0] = $('#0').text()
+//   board[1] = $('#1').text()
+//   board[2] = $('#2').text()
+//   board[3] = $('#3').text()
+//   board[4] = $('#4').text()
+//   board[5] = $('#5').text()
+//   board[6] = $('#6').text()
+//   board[7] = $('#7').text()
+//   board[8] = $('#8').text()
+//   // board[event.target] = event.target.text
+//
+//   console.log('board is', board)
+//   return board
+// }
 
 // Function to check for win based on board index
 const winCondition = () => {
@@ -78,14 +87,14 @@ const winCondition = () => {
       // or X wins right to left diagonal
       (board[2].innerHTML === 'X' && board[4].innerHTML === 'X' && board[6].innerHTML === 'X')) {
     // print player one wins
-    console.log('X wins')
-    $('#message').text('X wins')
-    $('#message').css('background-color', 'green')
     $('#game-board').hide()
-    $('#message').hide()
-    return true
+    $('#player-message').addClass('hidden')
+    $('#win-message').removeClass()
+    $('#win-message').text('X wins')
+    isOver = true
+    return isOver
     // if O wins top row
-  } else if ((board[0] === 'O' && board[1] === 'O' && board[2] === 'O') ||
+  } else if ((board[0].innerHTML === 'O' && board[1].innerHTML === 'O' && board[2].innerHTML === 'O') ||
       // or O wins middle row
       (board[3].innerHTML === 'O' && board[4].innerHTML === 'O' && board[5].innerHTML === 'O') ||
       // or O wins bottom row
@@ -101,38 +110,46 @@ const winCondition = () => {
       // or O wins right to left diagonal
       (board[2].innerHTML === 'O' && board[4].innerHTML === 'O' && board[6].innerHTML === 'O')) {
     // print player two wins
-    console.log('O wins')
-    $('#message').text('O wins')
-    $('#message').css('background-color', 'purple')
     $('#game-board').hide()
-    $('#message').hide()
-    return true
+    $('#player-message').addClass('hidden')
+    $('#win-message').removeClass()
+    $('#win-message').text('O wins')
+    isOver = true
+    return isOver
   } else if ((board[0].innerHTML !== '' && board[1].innerHTML !== '' && board[2].innerHTML !== '' &&
     board[3].innerHTML !== '' && board[4].innerHTML !== '' && board[5].innerHTML !== '' && board[6].innerHTML !== '' &&
     board[7].innerHTML !== '' && board[8].innerHTML !== '')) {
     // return draw
-    console.log('Its a draw')
-    $('#message').text('Its a draw')
-    $('#message').css('background-color', 'purple')
     $('#game-board').hide()
-    $('#message').hide()
-    return true
+    $('#player-message').addClass('hidden')
+    $('#win-message').removeClass()
+    $('#win-message').text('Its a draw')
+    isOver = true
+    return isOver
   }
 }
 
 const playAgain = function (event) {
   event.preventDefault()
-  $('#game-board').show()
-  $('.box').html('')
   board = ['', '', '', '', '', '', '', '', '']
   turn = player2
+  $('#game-board').show()
+  $('.box').html('')
+  $('#board-hide').removeClass()
+  $('#player-message').text('Player X Begin')
+  api.gameStart()
+    .then(ui.gameStartSuccess)
 }
 
 module.exports = {
   changeTurn,
-  pushToArray,
+  // pushToArray,
   winCondition,
   player1,
   player2,
-  playAgain
+  playAgain,
+  board,
+  turn,
+  isOver,
+  alertCurrentPlayer
 }

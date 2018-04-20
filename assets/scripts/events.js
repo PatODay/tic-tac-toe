@@ -8,7 +8,6 @@ const ui = require('./auth/ui')
 const onSignUp = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -18,42 +17,58 @@ const onSignUp = function (event) {
 const onSignIn = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
   document.getElementById('sign-in').reset()
 }
-//
-// const onChangePassword = function (event) {
-//   event.preventDefault()
-//   const data = getFormFields(event.target)
-//   console.log(data)
-//   api.changePassword(data)
-//     .then(ui.changePasswordSuccess)
-//     .catch(ui.changePasswordFailure)
-// }
-//
-// const onSignOut = function (event) {
-//   event.preventDefault()
-//   api.signOut()
-//     .then(ui.signOutSuccess)
-//     .catch(ui.signOutFailure)
-// }
+
+const onChangePassword = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.changePassword(data)
+    .then(ui.changePasswordSuccess)
+    .catch(ui.changePasswordFailure)
+  document.getElementById('change-password').reset()
+}
+
+const onSignOut = function (event) {
+  event.preventDefault()
+  api.signOut()
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
+}
+
+const onGetGameIndex = function () {
+  $('#index-message').removeClass('hidden')
+  api.gameIndex()
+}
+
+const gamePatch = function (event) {
+  event.preventDefault()
+  const data = event.target.id
+  const turn = event.target.innerText
+  const isOver = logic.winCondition()
+  api.gameUpdate(data, turn, isOver)
+    .then(ui.gamePatchSuccess)
+    .catch()
+}
 
 const addHandlers = () => {
   $('.box').on('click', logic.changeTurn)
   $('.box').on('click', logic.winCondition)
+  $('.box').on('click', logic.alertCurrentPlayer)
+  $('.box').on('click', gamePatch)
   $('#replay').on('click', logic.playAgain)
-  $('.box').on('click', logic.pushToArray)
+  $('#replay').on('click', ui.newGameSuccess)
   $('.box').on('click', logic.alertCurrentPlayer)
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
+  $('#change-password').on('submit', onChangePassword)
+  $('#sign-out').on('click', onSignOut)
+  $('#get-games').on('click', onGetGameIndex)
 }
 
 module.exports = {
-  // eventHandlers
   addHandlers
-  // removeHandlers
-  // gameLogic
 }

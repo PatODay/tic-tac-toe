@@ -11,5 +11,4 @@ const events = require('./events')
 
 $(() => {
   events.addHandlers()
-  // logic.eventHandlers()
 })
