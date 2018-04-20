@@ -43,6 +43,7 @@ const signInFailure = function () {
   $('input[type=password]').val('')
   setTimeout(() => {
     $('#player-message').addClass('hidden')
+    $('#player-message').text('')
   }, 3000
   )
 }
@@ -85,6 +86,7 @@ const signOutSuccess = function () {
   $('#sign-out-message').text('Thanks for playing, come back again soon')
   $('#sign-message').text('')
   $('#player-message').removeClass('hidden')
+  $('#player-message').text('')
   $('input[type=text]').val('')
   $('input[type=password]').val('')
   store.user = null
