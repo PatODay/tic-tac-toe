@@ -25,6 +25,7 @@ const signInSuccess = function (data) {
   $('#sign-up-modal').addClass('hidden')
   $('#sign-in-modal').addClass('hidden')
   $('#changePasswordButton').removeClass()
+  $('#sign-out-message').addClass('hidden')
   $('#sign-out').removeClass()
   $('#replay').removeClass()
   $('#get-games').removeClass()
@@ -76,6 +77,8 @@ const signOutSuccess = function () {
   $('#index-message').addClass('hidden')
   $('#win-message').addClass('hidden')
   $('#player-message').addClass('hidden')
+  $('#sign-out-message').removeClass('hidden')
+  $('#sign-out-message').text('Thanks for playing, come back again soon')
   $('input[type=text]').val('')
   $('input[type=password]').val('')
   store.user = null
