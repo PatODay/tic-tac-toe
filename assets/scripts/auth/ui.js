@@ -50,6 +50,7 @@ const changePasswordSuccess = function () {
 }
 
 const changePasswordFailure = function () {
+  $('#changePasswordModal').modal('toggle')
   $('#player-message').text('Failed to change password')
   $('#player-message').css('background-color', 'red')
 }
