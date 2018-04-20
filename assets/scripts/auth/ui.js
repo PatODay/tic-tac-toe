@@ -14,6 +14,8 @@ const signUpSuccess = function () {
 const signUpFailure = function () {
   $('#signUpModal').modal('hide')
   $('#sign-message').text('Failed to sign up')
+  $('input[type=text]').val('')
+  $('input[type=password]').val('')
 }
 
 const signInSuccess = function (data) {
@@ -34,7 +36,10 @@ const signInSuccess = function (data) {
 }
 
 const signInFailure = function () {
+  $('#signInModal').modal('toggle')
   $('#player-message').text('Failed to sign in')
+  $('input[type=text]').val('')
+  $('input[type=password]').val('')
 }
 
 const changePasswordSuccess = function () {
@@ -71,6 +76,8 @@ const signOutSuccess = function () {
   $('#index-message').addClass('hidden')
   $('#win-message').addClass('hidden')
   $('#player-message').addClass('hidden')
+  $('input[type=text]').val('')
+  $('input[type=password]').val('')
   store.user = null
 }
 
