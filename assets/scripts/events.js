@@ -11,7 +11,8 @@ const onSignUp = function (event) {
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
-  document.getElementById('sign-up').reset()
+  // document.getElementById('sign-up').reset()
+  $('#sign-up').reset()
 }
 
 const onSignIn = function (event) {
