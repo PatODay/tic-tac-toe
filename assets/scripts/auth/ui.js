@@ -3,22 +3,31 @@
 const store = require('../store')
 
 const signUpSuccess = function () {
+  $('#sign-message').removeClass()
   $('#sign-message').text('Successfully signed up')
   $('#signUpModal').modal('hide')
   setTimeout(() => {
     $('#sign-message').html('')
+    $('#sign-message').addClass('hidden')
   }, 3000
   )
 }
 
 const signUpFailure = function () {
+  $('#sign-message').removeClass()
   $('#signUpModal').modal('hide')
   $('#sign-message').text('Failed to sign up')
   $('input[type=text]').val('')
   $('input[type=password]').val('')
+  setTimeout(() => {
+    $('#sign-message').html('')
+    $('#sign-message').addClass('hidden')
+  }, 3000
+  )
 }
 
 const signInSuccess = function (data) {
+  $('#sign-message').removeClass()
   $('#sign-message').text('Successfully signed in')
   $('#signUpModal').modal('hide')
   $('#signInModal').modal('hide')
@@ -31,19 +40,21 @@ const signInSuccess = function (data) {
   $('#get-games').removeClass()
   setTimeout(() => {
     $('#sign-message').html('')
+    $('#sign-message').addClass('hidden')
   }, 3000
   )
   store.user = data.user
 }
 
 const signInFailure = function () {
+  $('#sign-message').removeClass()
   $('#signInModal').modal('toggle')
-  $('#player-message').text('Failed to sign in')
+  $('#sign-message').text('Failed to sign in')
   $('input[type=text]').val('')
   $('input[type=password]').val('')
   setTimeout(() => {
-    $('#player-message').addClass('hidden')
-    $('#player-message').text('')
+    $('#sign-message').addClass('hidden')
+    $('#sign-message').text('')
   }, 3000
   )
 }
