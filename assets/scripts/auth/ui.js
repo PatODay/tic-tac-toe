@@ -63,6 +63,8 @@ const changePasswordSuccess = function () {
   $('#password-message').text('Successfully changed password')
   $('#password-message').removeClass()
   $('#sign-out').removeClass()
+  $('input[type=text]').val('')
+  $('input[type=password]').val('')
   setTimeout(() => {
     $('#password-message').addClass('hidden')
   }, 3000
@@ -107,15 +109,16 @@ const signOutSuccess = function () {
   )
 }
 
+const modalClose = function () {
+  // $('input[type=text]').val('')
+  // $('input[type=password]').val('')
+}
+
 const gameStartSuccess = function (data) {
   $('#player-message').removeClass('hidden')
   $('#win-message').addClass('hidden')
   $('#index-message').addClass('hidden')
   store.game = data.game
-}
-
-const gameIndexSuccess = function (data) {
-  // console.log('data is', data)
 }
 
 const gamePatchSuccess = function (data) {
@@ -131,6 +134,6 @@ module.exports = {
   changePasswordFailure,
   signOutSuccess,
   gameStartSuccess,
-  gameIndexSuccess,
+  modalClose,
   gamePatchSuccess
 }
