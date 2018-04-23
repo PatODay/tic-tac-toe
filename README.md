@@ -14,7 +14,7 @@ I started the project by creating wireframes and user stories. Those gave me a g
 
 I would like to work more on the styling of the entire app, to make it more visually appealing to the user.
 
-# H1 Wireframes & User Stories
+# Wireframes & User Stories
 
 [Wireframe](https://i.imgur.com/DPnBfcJ.jpg)
 
