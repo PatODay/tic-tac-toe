@@ -9,14 +9,29 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 //   height: 150px;
 // }
 
+$font-main: 'Gang of Three', sans-serif;
+
 body {
   margin: 10px auto;
   text-align: center;
   width: 1000px;
 }
 
+h1 {
+  font-family: $font-main;
+}
+
+.col-xs-12 {
+  font-family: $font-main;
+}
+
+.sign-message {
+  font-family: $font-main;
+}
+
 .board {
   border: 1px;
+  font-family: $font-main;
   margin: 0 auto;
   width: 605px;
 }
@@ -24,12 +39,12 @@ body {
 .col-xs-4 {
   border: 1px solid;
   display: inline-block;
+  font-family: $font-main;
   font-size: 140px;
   height: 200px;
   overflow: hidden;
   text-align: center;
   width: 200px;
-
 }
 
 // .row1 {
