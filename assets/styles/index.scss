@@ -10,8 +10,10 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 // }
 
 $font-main: 'Gang of Three', sans-serif;
+$bg-color: #99d2fd;
 
 body {
+  background-color: $bg-color;
   margin: 10px auto;
   text-align: center;
   width: 1000px;
